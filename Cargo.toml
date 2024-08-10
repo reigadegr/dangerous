@@ -5,12 +5,18 @@ edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
-[profile.release]
-lto = true
-codegen-units = 1
-opt-level = 3
-panic = 'abort'
+[profile.dev]
+overflow-checks = false
 strip = true
 
+[profile.release]
+overflow-checks = false
+codegen-units = 1
+lto = "fat"
+opt-level = 3
+strip = true
+incremental = false
+
 [dependencies]
-libc = "0.2.148"
+libc = "0.2.155"
+# libc = "0.2.148"
